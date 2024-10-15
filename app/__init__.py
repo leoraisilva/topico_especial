@@ -1,0 +1,5 @@
+from python.services.main import app
+from python.services.request import tabelas
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
