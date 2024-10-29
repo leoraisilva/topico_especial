@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "__init__.py"]
+CMD ["python", "app/__init__.py"]

@@ -48,12 +48,13 @@ class Tabela:
 
 
     def ingles(): 
-        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
+        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-b/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
+
 
     def posicao_ingles(pos):
         if pos < 0 or pos > 19:
@@ -63,7 +64,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
 
 
@@ -72,7 +73,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
 
@@ -84,7 +85,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
 
@@ -93,8 +94,9 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
+
 
     def posicao_espanhol(pos):
         if pos < 0 or pos > 19:
@@ -104,7 +106,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
 
@@ -113,7 +115,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
 
@@ -125,7 +127,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
 
@@ -134,7 +136,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
 
@@ -146,7 +148,7 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
 
@@ -155,9 +157,10 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
     
+
     def posicao_saudita(pos):
         if pos < 0 or pos > 17:
             return '{"error": "skdki"}'
@@ -166,5 +169,6 @@ class Tabela:
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
         data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
-        table = json.loads(data[0])['classificacao']
+        table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
+
