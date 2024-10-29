@@ -2,6 +2,8 @@
 
 ## Trabalho para aula topico especial (Python)
 
+API em Python que permite ver a tabela atualizada das principais ligas de futebol mundial. Essa API permite obter a tabela da liga ou filtrar um time por sua posição na tabela 
+
 ### Como rodar
 
 Tenha o [python](https://www.python.org/downloads/) instalado na sua máquina (versão recomendada 3.12)
@@ -20,10 +22,6 @@ $ docker pull python:3.12-slim
 $ docker build -t leoraisilva/topico_especial .
 $ docker run -p 5000:5000 leoraisilva/topico_especial
 ```
-
-## API em Python que permite ver a tabela atualizada das principais ligas de futebol mundial
-
-A API permite obter a tabela da tabela da liga ou filtrar um time por sua posição na tabela 
 
 ## Ligas suportadas
 
