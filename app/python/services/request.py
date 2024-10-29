@@ -77,7 +77,7 @@ class Tabela:
 
 
     def posicao_alemao(pos):
-        if pos < 0 or pos > 19:
+        if pos < 0 or pos > 17:
             return '{"error": "skdki"}'
     
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
@@ -139,7 +139,7 @@ class Tabela:
 
 
     def posicao_frances(pos):
-        if pos < 0 or pos > 19:
+        if pos < 0 or pos > 17:
             return '{"error": "skdki"}'
     
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
@@ -159,7 +159,7 @@ class Tabela:
         return table
     
     def posicao_saudita(pos):
-        if pos < 0 or pos > 19:
+        if pos < 0 or pos > 17:
             return '{"error": "skdki"}'
 
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
