@@ -47,11 +47,11 @@ class Tabela:
         return table[pos]
 
 
-    def ingles(): 
-        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-b/")
+    def ingles():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
@@ -63,7 +63,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
 
@@ -72,7 +72,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
@@ -84,7 +84,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
@@ -93,7 +93,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-espanhol/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
@@ -105,7 +105,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-espanhol/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
@@ -114,7 +114,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-italiano/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
@@ -126,7 +126,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-italiano/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
@@ -135,7 +135,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
 
@@ -147,7 +147,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
     
@@ -156,7 +156,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table
     
@@ -168,7 +168,7 @@ class Tabela:
         raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
         html = BeautifulSoup(raw.content, "html.parser")
         content = html.find('script', id='scriptReact').string
-        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
         table = json.loads(data[0].rstrip(';'))['classificacao']
         return table[pos]
 
