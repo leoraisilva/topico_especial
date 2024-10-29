@@ -4,116 +4,171 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-
-class tabelas:
-    def __init__(self, id):
-        self.id = id
-
-    def brasileiraoA(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/brasileirao-serie-a/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?);', result)
-        obj = json.loads(constant[0])
-        result = obj['classificacao']
-        return result[self.id]
+class Tabela:
+    def brasileiro_a():
+        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-a/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        table = json.loads(data[0])['classificacao']
+        return table
 
 
-    def brasileiraoB(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/brasileirao-serie-b/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?);', result)
-        obj = json.loads(constant[0])
-        result = obj['classificacao']
-        return result[self.id]
+    def posicao_brasileiro_a(pos):
+        if pos < 0 or pos > 19:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-a/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        table = json.loads(data[0])['classificacao']
+        return table[pos]
 
 
-    def ingles(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def brasileiro_b():
+        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-b/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        table = json.loads(data[0])['classificacao']
+        return table
+    
+
+    def posicao_brasileiro_b(pos):
+        if pos < 0 or pos > 19:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/brasileirao-serie-b/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?);', content)
+        table = json.loads(data[0])['classificacao']
+        return table[pos]
 
 
-    def espanhol(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-espanhol/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def ingles():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
 
 
-    def italiano(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-italiano/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def posicao_ingles(pos):
+        if pos < 0 or pos > 19:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-ingles/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
 
 
-    def alemao(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def alemao():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
 
 
-    def frances(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def posicao_alemao(pos):
+        if pos < 0 or pos > 17:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-alemao/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
+    
+
+    def espanhol():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-espanhol/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
 
 
-    def saudito(self):
-        if self.id < 0 & self.id >= 20:
-            return "erro na requesicao"
-        http_request = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
-        soup = BeautifulSoup(http_request.content, "html.parser")
-        resultado = soup.find('script', id='scriptReact')
-        result = resultado.string
-        constant = re.findall(r'const classificacao\s*=\s*(.*?)\n', result)
-        constant = constant[0].rstrip(';')
-        obj = json.loads(constant)
-        result = obj['classificacao']
-        return result[self.id]
+    def posicao_espanhol(pos):
+        if pos < 0 or pos > 19:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-espanhol/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
+    
+
+    def italiano():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-italiano/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
+
+
+    def posicao_italiano(pos):
+        if pos < 0 or pos > 19:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-italiano/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
+    
+
+    def frances():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
+
+
+    def posicao_frances(pos):
+        if pos < 0 or pos > 17:
+            return '{"error": "skdki"}'
+    
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-frances/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
+    
+
+    def saudita():
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table
+    
+
+    def posicao_saudita(pos):
+        if pos < 0 or pos > 17:
+            return '{"error": "skdki"}'
+
+        raw = requests.get("https://ge.globo.com/futebol/futebol-internacional/futebol-saudita/")
+        html = BeautifulSoup(raw.content, "html.parser")
+        content = html.find('script', id='scriptReact').string
+        data = re.findall(r'const classificacao\s*=\s*(.*?)\n', content)
+        table = json.loads(data[0].rstrip(';'))['classificacao']
+        return table[pos]
+
