@@ -10,4 +10,4 @@ services:
     volumes:
       - .:/app
     environment:
-      - FLASK_ENV=development  # Exemplo de variável de ambiente para Flask, ajuste conforme necessário
+      - FLASK_ENV=development
