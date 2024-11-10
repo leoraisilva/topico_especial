@@ -5,6 +5,9 @@ from firebase_admin import firestore
 
 class Firebase:
     def ultimo_jogo(self, documento, campo):
+        if not firebase_admin._apps:
+            cred = credentials.Certificate('python/services/projeto.json')
+            firebase_admin.initialize_app(cred)
         db = firestore.client()
         collect = db.collection('brasileirao').document(documento)
         docs = collect.get()
