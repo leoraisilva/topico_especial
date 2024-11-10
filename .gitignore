@@ -24,6 +24,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+app/python/services/projeto.json
 MANIFEST
 
 # PyInstaller
