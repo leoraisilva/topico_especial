@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 
+from .firebase import Firebase
 from ..services.request import Football
 
 app = Flask(__name__)
@@ -144,3 +145,8 @@ def jogos_italiano():
 def jogos_saudita():
     football = Football()
     return football.games_saudita()
+
+@app.route('/api/v1/ultimos/brasileirao/<time>/<adversario>')
+def ultimos_brasileirao(time, adversario):
+    firebase = Firebase()
+    return firebase.ultimo_jogo(time, adversario)
