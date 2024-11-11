@@ -5,10 +5,10 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/python/services/projeto.json /app/python/services/projeto.json
+COPY app/python/services/projeto.json /app/app/python/services/projeto.json
 
 COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "app/__init__.py"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
